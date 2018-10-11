@@ -1,0 +1,23 @@
+{
+  "name": "node-openapi-generator",
+  "version": "1.0.0",
+  "description": "A package that will generate a boilerplate express-based node API project for the given open api specification.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Rob Cook <robcook@gmail.com>",
+  "license": "ISC",
+  "repository": "https://github.com/koocbor/node-openapi-generator",
+  "dependencies": {
+    "command-line-args": "^5.0.2",
+    "command-line-usage": "^5.0.5",
+    "js-yaml": "^3.12.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.6.1",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0"
+  }
+}
