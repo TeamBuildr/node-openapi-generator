@@ -1,0 +1,13 @@
+// {{fileName}}
+
+class {{modelName}} {
+  /**{{#each properties}}
+   * {{dataType}} {{#unless required}}[{{/unless}}{{@key}}{{#unless required}}]{{/unless}}{{#if description}} {{/if}}{{description}}{{/each}}
+   */
+  constructor(options) {
+{{#each properties}}    this.{{@key}} = options.{{@key}};
+{{/each}}
+  }
+}
+
+module.exports = {{modelName}};
