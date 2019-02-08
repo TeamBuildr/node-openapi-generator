@@ -1,0 +1,11 @@
+// {{fileName}}
+
+{{#each methods}}const {{name}} = async (req, res, next) => {
+};{{/each}}
+
+module.exports = (injectedOAuthServer) => {
+  
+  return {
+    {{#each methods}}{{action}}: [{{#if scope}}injectedOAuthServer.authenticate({ scope: '{{scope}}' }), {{/if}}{{name}}],{{/each}}
+  };
+};

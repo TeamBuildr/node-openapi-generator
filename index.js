@@ -4,6 +4,7 @@ const path = require('path');
 const fileUtils = require('./lib/fileUtils');
 const loadSource = require('./lib/loadsource');
 const createModel = require('./lib/createModel');
+const createRoute = require('./lib/createRoute');
 
 const init = () => {
 
@@ -40,6 +41,12 @@ const run = async () => {
     if (outputPathObj.base === 'model.hbs') {
       Object.keys(doc.components.schemas).forEach((key) => {
         createModel(p, outputPathDir, key, doc);
+      });
+    }
+
+    if (outputPathObj.base === 'route.hbs') {
+      Object.keys(doc.paths).forEach((key) => {
+        createRoute(p, outputPathDir, key, doc);
       });
     }
   });
