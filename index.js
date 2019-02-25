@@ -5,6 +5,7 @@ const fileUtils = require('./lib/fileUtils');
 const loadSource = require('./lib/loadsource');
 const createModel = require('./lib/createModel');
 const createRoute = require('./lib/createRoute');
+const createTestFactory = require('./lib/createTestFactory');
 
 const init = () => {
 
@@ -44,10 +45,20 @@ const run = async () => {
       });
     }
 
+    if (outputPathObj.base === 'modelTestFactory.hbs') {
+      Object.keys(doc.components.schemas).forEach((key) => {
+        createTestFactory(p, outputPathDir, key, doc);
+      });
+    }
+
     if (outputPathObj.base === 'route.hbs') {
       Object.keys(doc.paths).forEach((key) => {
         createRoute(p, outputPathDir, key, doc);
       });
+    }
+
+    if (pathObj.ext === '.js') {
+      fs.copyFileSync(p, outputPathStr);
     }
   });
 
