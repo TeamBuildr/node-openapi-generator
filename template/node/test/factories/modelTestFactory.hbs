@@ -1,0 +1,35 @@
+// {{fileName}}
+
+const faker = require('faker');
+const models = require('../../models');
+
+/**
+ * Generate an object with the attributes
+ * needed to succesfully create a {{modelName}} instance.
+ *
+ * @param {Object} props Properties to use for the {{modelName}} object.
+ * @return {Object} An object to build the {{modelName}} from.
+ */
+const data = async (props = {}) => {
+  const defaultProps = {
+{{#each properties}}    {{@key}}: {{#if fakerArray}}[]{{/if}}{{#if fakerInt}}faker.random.number(){{/if}}{{#if fakerNumber}}faker.random.number({ min: 0, max: 100, precision: 2 }){{/if}}{{#if fakerString}}faker.random.alphaNumeric(10){{/if}},
+{{/each}}
+  };
+
+  return Object.assign({}, defaultProps, props);
+};
+
+/**
+ * Helper method to generate faker models via a factory.
+ */
+models.{{modelName}}.create = function create(seedData) {
+  return new models.{{modelName}}(seedData);
+};
+
+/**
+ * Generates a {{modelName}} instance from the properties provided.
+ *
+ * @param {Object} props Properties to use for the {{modelName}}
+ * @return {Object} a {{modelName}} instance
+ */
+module.exports = async (props = {}) => models.{{modelName}}.create(await data(props));

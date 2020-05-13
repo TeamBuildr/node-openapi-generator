@@ -7,6 +7,8 @@ const mapType = (openapiType) => {
   switch (type) {
     case 'integer':
       return 'Integer';
+    case 'number':
+      return 'Number';
     case 'string':
       return 'String';
     default:
